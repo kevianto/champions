@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const deviceController_1 = require("../controllers/deviceController");
+const router = (0, express_1.Router)();
+router.post('/led/on', deviceController_1.deviceController.turnLedOn);
+router.post('/led/off', deviceController_1.deviceController.turnLedOff);
+router.post('/fan/on', deviceController_1.deviceController.turnFanOn);
+router.post('/fan/off', deviceController_1.deviceController.turnFanOff);
+router.get('/status', deviceController_1.deviceController.getStatus);
+exports.default = router;
