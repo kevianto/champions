@@ -5,18 +5,22 @@ import { DeviceState } from '../types/device';
 
 export class DeviceService {
   public async turnLedOn(): Promise<void> {
+    deviceStore.updateState({ ledOn: true });
     await mqttService.publish(config.mqttLedTopic, 'ON', 1);
   }
 
   public async turnLedOff(): Promise<void> {
+    deviceStore.updateState({ ledOn: false });
     await mqttService.publish(config.mqttLedTopic, 'OFF', 1);
   }
 
   public async turnFanOn(): Promise<void> {
+    deviceStore.updateState({ fanOn: true });
     await mqttService.publish(config.mqttFanTopic, 'ON', 1);
   }
 
   public async turnFanOff(): Promise<void> {
+    deviceStore.updateState({ fanOn: false });
     await mqttService.publish(config.mqttFanTopic, 'OFF', 1);
   }
 
